@@ -172,7 +172,8 @@ $maxRetries = 3
 $pushed = $false
 for ($i = 1; $i -le $maxRetries; $i++) {
     Write-Host "  Push attempt $i of $maxRetries ..." -ForegroundColor DarkGray
-    git push -u origin main 2>&1 | Out-Host
+    $pushOutput = cmd /c "git push -u origin main 2>&1"
+    $pushOutput | ForEach-Object { Write-Host "    $_" -ForegroundColor DarkGray }
     if ($LASTEXITCODE -eq 0) {
         $pushed = $true
         break
