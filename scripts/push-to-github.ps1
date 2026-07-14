@@ -139,11 +139,11 @@ $remoteUrl = "https://github.com/$ghUser/$RepoName.git"
 # -- stage and commit --
 Write-Step "Staging files and creating initial commit"
 
-$status = git status --porcelain 2>&1
+$status = (git status --porcelain 2>$null) -join "`n"
 if (-not $status) {
     Write-Warn2 "No changes to commit, skipping."
 } else {
-    git add -A
+    git add -A 2>$null
     if ($LASTEXITCODE -ne 0) { Die "git add failed." }
     Write-Ok "Staged all files"
 
@@ -156,9 +156,10 @@ if (-not $status) {
 # -- add remote and push --
 Write-Step "Configuring remote and pushing"
 
-$existingRemote = git remote get-url origin 2>&1
-if ($LASTEXITCODE -eq 0) {
-    git remote remove origin
+# Remove existing origin if present (ignore errors if none)
+$remotes = (git remote 2>$null) -join " "
+if ($remotes -match "origin") {
+    git remote remove origin 2>$null
     Write-Warn2 "Removed existing origin remote"
 }
 
