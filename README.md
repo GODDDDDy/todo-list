@@ -2,6 +2,8 @@
 
 一个视觉炫酷、功能完整的待办事项单页应用。采用 2025 年最现代的前端技术栈与标准工程化仓库结构构建，纯前端、本地持久化、零后端依赖。
 
+> **在线体验**：<https://godddddy.github.io/todo-list/>
+
 ## ✨ 功能
 
 - **任务增删改查**：添加、编辑、删除、标记完成
@@ -97,6 +99,20 @@ npm run check
 | `P` | 打开番茄钟 |
 | `S` | 打开设置 |
 | `T` | 添加每日模板 |
+
+## 🚀 部署
+
+### GitHub Pages（已配置）
+
+推送 `main` 分支即自动触发 GitHub Actions 构建并部署到 GitHub Pages。
+
+首次使用需在仓库 **Settings → Pages → Source** 选择 **GitHub Actions**。
+
+访问地址：<https://godddddy.github.io/todo-list/>
+
+### 其他平台
+
+详见 [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md)，支持 Vercel / Netlify / EdgeOne Pages / Cloud Studio 等。
 
 ## 📄 License
 
